@@ -12,8 +12,10 @@ function App() {
   const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
-    const { data: posts } = await axios.get(urlBaseServer + "/posts");
+    const { data: posts} = await axios.get(urlBaseServer + "/posts");
+    console.log(posts)
     setPosts([...posts]);
+    console.log(posts)
   };
 
   const agregarPost = async () => {

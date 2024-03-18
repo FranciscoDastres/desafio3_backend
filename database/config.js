@@ -11,11 +11,12 @@ const pool = new pg.Pool ({
 
 const getPosts = async () => {
     const result = await pool.query("SELECT * from post")
-    console.log(result)
-    return result
+    // console.log(result.rows)
+    return result.rows
 }
 
 const addPosts = async (titulo, imagen,descripcion,likes) => {
+    console.log(imagen)
     const consulta = "INSERT INTO post values (DEFAULT,$1,$2,$3,$4)"
     const values = [titulo, imagen,descripcion,likes]
     const result = await pool.query(consulta, values)
