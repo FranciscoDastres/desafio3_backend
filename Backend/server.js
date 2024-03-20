@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { getPosts, addPosts, modificarPost, borrarPost } from './database/config.js';
+import { getPosts, addPosts, modificarPost, borrarPost } from './config.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
