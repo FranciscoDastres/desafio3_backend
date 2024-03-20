@@ -10,7 +10,7 @@ const pool = new pg.Pool ({
 })
 
 const getPosts = async () => {
-    const result = await pool.query("SELECT * from post")
+    const result = await pool.query("SELECT * from post order by 1")
     // console.log(result.rows)
     return result.rows
 }
