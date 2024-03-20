@@ -1,6 +1,9 @@
-function Form({ setTitulo, setImgSRC, setDescripcion, agregarPost }) {
+// function Form({ setTitulo, setImgSRC, setDescripcion, agregarPost }) {
+function Form({ setTitulo, setImgSRC, setDescripcion, handleSubmit }) {
   return (
-    <div className="form">
+    // <div className="form">
+    // <div className="form" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div className="mb-2">
         <h6>Agregar post</h6>
         <label>Título</label>
@@ -24,11 +27,15 @@ function Form({ setTitulo, setImgSRC, setDescripcion, agregarPost }) {
         ></textarea>
       </div>
       <div className="d-flex">
-        <button onClick={agregarPost} className="btn btn-light m-auto" >
+        {/* <button onClick={agregarPost} className="btn btn-light m-auto" >
+          Agregar
+        </button> */}
+        <button type='submit' className="btn btn-light m-auto" >
           Agregar
         </button>
       </div>
-    </div>
+    {/* </div> */}
+    </form>
   );
 }
 

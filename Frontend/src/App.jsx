@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Form from "./components/Form";
 import Post from "./components/Post";
+import { successToast, errorToast } from "./utils/toast";
 
 const urlBaseServer = "http://localhost:3000";
 
@@ -24,6 +25,7 @@ function App() {
     getPosts()
       .then((x) => {
         setPosts(x);
+        successToast("Post creado correctamente");
       })
       .catch((err) => {
         console.log(err)
@@ -50,6 +52,7 @@ function App() {
     getPosts()
       .then((x) => {
         setPosts(x);
+        successToast("Post Eliminado correctamente");
       })
       .catch((err) => {
         console.log(err)
@@ -66,6 +69,16 @@ function App() {
         console.log(err)
       })
   }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); 
+    if (!titulo.trim() || !imgSrc.trim() || !descripcion.trim()){
+      return errorToast("Todos los campos son obligatorios"); 
+    }
+    
+    agregarPost(); 
+  };
+
   return (
     <div className="App">
       <h2 className="py-5 text-center">&#128248; Like Me &#128248;</h2>
@@ -75,7 +88,8 @@ function App() {
             setTitulo={setTitulo}
             setImgSRC={setImgSRC}
             setDescripcion={setDescripcion}
-            agregarPost={agregarPost}
+            // agregarPost={agregarPost}
+            handleSubmit={handleSubmit} //handlesub
           />
         </div>
         <div className="col-12 col-sm-8 px-5 row posts align-items-start">
