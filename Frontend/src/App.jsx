@@ -12,34 +12,60 @@ function App() {
   const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
-    const { data: posts} = await axios.get(urlBaseServer + "/posts");
-    console.log(posts)
-    setPosts([...posts]);
-    console.log(posts)
+    const { data: posts } = await axios.get(urlBaseServer + "/posts");
+    // setPosts([...posts]);
+    return posts;
   };
 
   const agregarPost = async () => {
     const post = { titulo, url: imgSrc, descripcion };
     await axios.post(urlBaseServer + "/posts", post);
-    getPosts();
+    // getPosts();
+    getPosts()
+      .then((x) => {
+        setPosts(x);
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   };
 
   // este método se utilizará en el siguiente desafío
   const like = async (id) => {
     await axios.put(urlBaseServer + `/posts/like/${id}`);
-    getPosts();
+    // getPosts();
+    getPosts()
+      .then((x) => {
+        setPosts(x);
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   };
 
   // este método se utilizará en el siguiente desafío
   const eliminarPost = async (id) => {
     await axios.delete(urlBaseServer + `/posts/${id}`);
-    getPosts();
+    // getPosts();
+    getPosts()
+      .then((x) => {
+        setPosts(x);
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   };
 
   useEffect(() => {
-    getPosts();
+    // getPosts();
+    getPosts()
+      .then((x) => {
+        setPosts(x);
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }, []);
-
   return (
     <div className="App">
       <h2 className="py-5 text-center">&#128248; Like Me &#128248;</h2>
